@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ldeq\\api\\' => array($baseDir . '/api'),
+    'Twig\\' => array($vendorDir . '/twig/twig/src'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
 );
