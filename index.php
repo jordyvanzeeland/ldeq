@@ -1,8 +1,10 @@
-<?php
+<?php session_start();
+
+require_once __DIR__ . '/vendor/autoload.php';
 
 use ldeq\api\Session;
 
-require_once __DIR__ . '/vendor/autoload.php';
+include('views/header.php');
 
 $Session = new Session();
 
@@ -14,51 +16,40 @@ if(!$Session->__Get('username')){
 }else{
 	echo 'sessie';
 }
-	//The first element should be a controller
-    $requestedController = $url[0]; 
 
-    // If a second part is added in the URI, 
-    // it should be a method
-    $requestedAction = isset($url[1])? $url[1] :'';
+$requestedController = $url[0]; 
+$requestedAction = isset($url[1])? $url[1] :'';
+$requestedParams = array_slice($url, 2); 
+$ctrlPath = __DIR__.'/Controllers/'.$requestedController.'_controller.php';
 
-    // The remain parts are considered as 
-    // arguments of the method
-    $requestedParams = array_slice($url, 2); 
+if (file_exists($ctrlPath)){
 
-    // Check if controller exists. NB: 
-    // You have to do that for the model and the view too
-    $ctrlPath = __DIR__.'/Controllers/'.$requestedController.'_controller.php';
+    require_once __DIR__.'/Models/'.$requestedController.'_model.php';
+    require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
+    require_once __DIR__.'/Views/'.$requestedController.'_view.php';
 
+    $modelName      = ucfirst($requestedController).'Model';
+    $controllerName = ucfirst($requestedController).'Controller';
+    $viewName       = ucfirst($requestedController).'View';
 
-
-        if (file_exists($ctrlPath))
-        {
-
-            require_once __DIR__.'/Models/'.$requestedController.'_model.php';
-            require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
-            require_once __DIR__.'/Views/'.$requestedController.'_view.php';
-
-            $modelName      = ucfirst($requestedController).'Model';
-            $controllerName = ucfirst($requestedController).'Controller';
-            $viewName       = ucfirst($requestedController).'View';
-
-            $controllerObj  = new $controllerName( new $modelName );
-            $viewObj        = new $viewName( $controllerObj, new $modelName );
+    $controllerObj  = new $controllerName( new $modelName );
+    $viewObj        = new $viewName( $controllerObj, new $modelName );
 
 
-            // If there is a method - Second parameter
-            if ($requestedAction != '')
-            {
-                // then we call the method via the view
-                // dynamic call of the view
-                print $viewObj->$requestedAction($requestedParams);
+    // If there is a method - Second parameter
+    if ($requestedAction != ''){
+        // then we call the method via the view
+        // dynamic call of the view
+        print $viewObj->$requestedAction($requestedParams);
 
-            }
+    }
 
-        }else{
+}else{
 
-            header('HTTP/1.1 404 Not Found');
-            die('404 - The file - '.$ctrlPath.' - not found');
-            //require the 404 controller and initiate it
-            //Display its view
-        }
+    header('HTTP/1.1 404 Not Found');
+    die('404 - The file - '.$ctrlPath.' - not found');
+    //require the 404 controller and initiate it
+    //Display its view
+}
+
+include('views/footer.php');

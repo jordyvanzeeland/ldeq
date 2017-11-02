@@ -2,12 +2,14 @@
 
 namespace ldeq\api;
 
+use PDO;
+
 Class Query{
 
-	private $DbHost;
-	private $DbUser;
-	private $DbPass;
-	private $DbName;
+	public $DbHost;
+	public $DbUser;
+	public $DbPass;
+	public $DbName;
 
 	public function __construct(){
 		$this->DbHost = 'localhost';
@@ -18,8 +20,9 @@ Class Query{
 
 	public function Connect($DbHost, $DbUser, $DbPass, $DbName){
 
-		mysql_connect($DbHost, $DbUser, $DbPass) or die('Can\'t connect to database');
-		mysql_select_db($DbName);
+		$pdo = new PDO('mysql:host=' . $DbHost . ';dbname=' . $DbName . ';charset=utf8mb4', $DbUser, $DbPass);
+
+		return $pdo;
 
 	}
 

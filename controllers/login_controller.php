@@ -6,20 +6,10 @@ Class LoginController{
 
     public function index(){
         
-        return (new Authentication())->Authenticate();
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            return (new Authentication())->Authenticate();
+        }
 
     }
-
-    // private $model;
-
-    //     function __construct($model)
-    //     {
-    //         $this->model = $model;
-    //     }
-
-    //     public function sayWelcome()
-    //     {
-    //         return $this->model->welcomeMessage();
-    //     }
 
 }

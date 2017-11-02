@@ -4,6 +4,7 @@ namespace ldeq\api;
 
 use ldeq\api\Query;
 use ldeq\api\Session;
+use PDO;
 
 Class Authentication{
 
@@ -11,11 +12,6 @@ Class Authentication{
 	public $password;
 	public $username_err;
 	public $password_err;
-
-	public function Register(){
-		$Query = (new Query())->Insert('ldeq_users', ['username', 'password', 'email', 'fullname'], ['ldeq', password_hash('Welkom01', PASSWORD_DEFAULT), 'ldeq@test.nl', 'Ldeq Test']);
-		mysql_query($Query);
-	}
 
 	public function Authenticate(){
 
@@ -29,17 +25,17 @@ Class Authentication{
     
 		    if(empty(trim($_POST['password']))){
 		        $password_err = 'Please enter your password.';
-		    } else{
+		    } else
 		        $password = trim($_POST['password']);
 		    }
 
 		    if(empty($username_err) && empty($password_err)){
+		    	$DbLogin = new Query;
+		    	$pdo = $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
 		    	$Query = (new Query())->Select('ldeq_users', ['username', 'password'], 'username="' . $_POST["username"] . '"');
-		    	$Result = mysql_query($Query);
-
-		    	if(mysql_num_rows($Result) == 1){
-
-		    		$row = mysql_fetch_assoc($Result);
+		    	$Sql = $pdo->prepare($Query);
+		    	$Sql->execute();
+		    	$row = $Sql->fetch(PDO::FETCH_ASSOC);
 
 		    		if(password_verify($_POST['password'], $row['password'])){
 		    			echo 'Je bent ingelogd';
@@ -50,12 +46,8 @@ Class Authentication{
 		    		}else{
 		    			echo 'Je bent niet ingelogd';
 		    		}
-		    	}else{
-		    		echo 'Er is geen gebruiker gevonden met deze gebruikersnaam';
-		    	}
-		    }
-		}
-
+	    	}else{
+	    		echo 'Er is geen gebruiker gevonden met deze gebruikersnaam';
+	    	}
 	}
-
 }
