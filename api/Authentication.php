@@ -38,10 +38,11 @@ Class Authentication{
 		    	$row = $Sql->fetch(PDO::FETCH_ASSOC);
 
 		    		if(password_verify($_POST['password'], $row['password'])){
-		    			echo 'Je bent ingelogd';
 		    			$Session = new Session();
-		    			$Session->Start();
-		    			$Session->__Set('username', $username);  
+		    			$Session->__set('username', $username);
+
+		    			header('Location: /ldeq/');
+		    			
                         
 		    		}else{
 		    			echo 'Je bent niet ingelogd';

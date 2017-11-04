@@ -4,35 +4,29 @@ namespace ldeq\api;
 
 Class Session{
 
-	protected static $Init = false;
+	protected static $init = false;
     
-    public function Start() {
-        self::$Init = session_start();
+    public function __set( $key, $value ) {
+        $_SESSION[$key] = $value;
     }
-
-	public function __Set($Key, $Value){
-		if($_SESSION){
-			$_SESSION[$Key] = $Value;
-		}
-	}
-
-	public function __Get($Key){
-		if($_SESSION){
-			return $_SESSION[$Key];
-		}
-	}
-
-	public function __Unset( $Key ) {
-		if($_SESSION){
-        	unset( $_SESSION[$Key] );
-    	}
+    
+    public function __get( $key ) {
+        return $_SESSION[$key];
     }
-
-    public function __isset( $Key ) {
-        return array_key_exists( $Key, $_SESSION );
+    
+    public function __isset( $key ) {
+        return array_key_exists( $key, $_SESSION );
     }
-
-    public function Destroy(){
+    
+    public function __unset( $key ) {
+        unset( $_SESSION[$key] );
+    }
+    
+    public function __toString() {
+        return print_r( $_SESSION , true); 
+    }
+    
+    public function destroy(){
         return session_destroy();
     }
 
