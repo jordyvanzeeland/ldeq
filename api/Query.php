@@ -26,9 +26,9 @@ Class Query{
 
 	}
 
-	public function Select($Table, $Columns = [], $Where){
+	public function Select($Table, $Columns = [], $Where = null){
 		
-		$this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
 		$Columns = implode(", ", $Columns);
 
 		if($Where){
@@ -37,7 +37,11 @@ Class Query{
 			$Query = 'SELECT ' . $Columns . ' FROM ' . $Table;
 		}
 
-		return $Query;
+		$Results = $pdo->prepare($Query);
+		$Results->execute();
+		$Row = $Results->fetch(PDO::FETCH_ASSOC);
+
+		return $Row;
 
 	}
 

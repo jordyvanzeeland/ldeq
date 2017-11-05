@@ -1,1 +1,52 @@
-Welcome to the LDEQ Password system
+<div class="container">
+	<div class="row">
+		<table width="100%">
+			<thead>
+				<tr>
+					<th>Projectnaam</th>
+					<th>Project Url</th>
+					<th>Project Categorie</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ Projects.ProjectName }}</td>
+					<td>{{ Projects.ProjectUrl }}</td>
+					{% if Projects.ProjectCat == 2 %}
+						<td>Equalizer C.P.D.</td>
+					{% else %}
+						<td>Lacle Design</td>
+					{% endif %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$.ajax({ 
+		 url: '/ldeq/controllers/index_controller.php',
+         data: {action: 'ajax'},
+         type: 'post',
+         success: function(data) {
+              console.log('Data inside');
+          }
+	});
+
+// 	$.ajax({
+// 	  type: 'POST',
+// 	  url: '/ldeq/controllers/index_controller.php',
+// 	  action: 'ajax',
+// 	  //data: postedData,
+// 	  dataType: 'json',
+// 	  success: function(data){
+//         	console.log('Data received');
+//     	}
+// 	});
+
+});
+
+</script>

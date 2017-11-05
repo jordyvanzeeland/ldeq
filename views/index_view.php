@@ -10,7 +10,8 @@ Class IndexView{
     }
 
     public function index(){
-        return (new Twig())->View('Index.html', 'action', $this->controller->index());
+    	$Projects = $this->controller->index();
+        return (new Twig())->View('Index.html', array('Projects' => $Projects));
     }
 
 }

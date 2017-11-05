@@ -10,3 +10,12 @@ body{
 	width:100%;
 	height:100%;
 }
+
+.header{
+	background: red; 
+	background: -webkit-linear-gradient(left, #d0ac53 , #0f8dbb); 
+	background: -o-linear-gradient(right, #d0ac53, #0f8dbb); 
+	background: -moz-linear-gradient(right, #d0ac53, #0f8dbb); 
+	background: linear-gradient(to right, #d0ac53 , #0f8dbb); 
+	min-height:50px;
+}
