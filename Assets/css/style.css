@@ -1,6 +1,12 @@
 body{
 	padding:0;
 	margin:0;
+	background-color:#f7fafb !important;
+	font-size:12px;
+}
+
+a{
+	color:#6fcf95;
 }
 
 .login{
@@ -12,10 +18,57 @@ body{
 }
 
 .header{
-	background: red; 
-	background: -webkit-linear-gradient(left, #d0ac53 , #0f8dbb); 
-	background: -o-linear-gradient(right, #d0ac53, #0f8dbb); 
-	background: -moz-linear-gradient(right, #d0ac53, #0f8dbb); 
-	background: linear-gradient(to right, #d0ac53 , #0f8dbb); 
-	min-height:50px;
+	background: #253a44;
+	min-height:100px;
+}
+
+.contentLeft{
+	background:#ffffff;
+	box-shadow: 1px 3px 10px #ddd;
+	margin-top:40px;
+	padding:30px 30px !important;
+	color:#cbcbcb;
+}
+
+.contentRight{
+	padding:35px 40px !important;
+	font-size:14px;
+}
+
+label{
+	color:#273339;
+	font-weight: bold;
+	font-size:13px;
+}
+
+table th{
+	color:#273339;
+	font-size:14px;
+	padding-bottom:10px;
+}
+
+table td{
+	color:#777777;
+	font-size:14px;
+	border-bottom:solid 1px #ddd;
+	height:45px;
+}
+
+table tr:last-child td{
+	border-bottom:none;
+}
+
+select, input[type="text"]{
+	-webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
+	background:#e9edf0;
+	border-radius: 0px;
+	border:none;
+	padding:8px 15px;
+	width:100%;
+}
+
+.search{
+	margin-bottom:20px;
 }

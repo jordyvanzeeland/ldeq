@@ -22,4 +22,11 @@ Class IndexController{
 
     }
 
+    public function LiveSearch(){
+    	$DbLogin = new Query;
+		$DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
+		$GetProjects = $DbLogin->Select('ldeq_projects', ['*'], 'ProjectName LIKE "%' . $_POST['Search'] . '%"');
+		return $GetProjects;
+    }
+
 }

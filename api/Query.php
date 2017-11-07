@@ -39,7 +39,7 @@ Class Query{
 
 		$Results = $pdo->prepare($Query);
 		$Results->execute();
-		$Row = $Results->fetch(PDO::FETCH_ASSOC);
+		$Row = $Results->fetchAll();
 
 		return $Row;
 
