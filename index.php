@@ -17,7 +17,7 @@ if($url == '/'){
     }else{	
 		require_once __DIR__.'/Models/index_model.php';
 		require_once __DIR__.'/Controllers/index_controller.php';
-		require_once __DIR__.'/Views/index_view.php';
+		require_once __DIR__.'/Views/Index/index_view.php';
 
 		$indexModel = New IndexModel();
 		$indexController = New IndexController($indexModel);
@@ -35,7 +35,7 @@ if($url == '/'){
 
 	    require_once __DIR__.'/Models/'.$requestedController.'_model.php';
 	    require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
-	    require_once __DIR__.'/Views/'.$requestedController.'_view.php';
+	    require_once __DIR__.'/Views/'.$requestedController.'/'.$requestedController.'_view.php';
 
 	    $modelName      = ucfirst($requestedController).'Model';
 	    $controllerName = ucfirst($requestedController).'Controller';
