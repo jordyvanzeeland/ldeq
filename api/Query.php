@@ -45,14 +45,14 @@ Class Query{
 
 	}
 
-	public function Insert($Table, $Columns = null, $Values){
+	public function Insert($Table, $Columns = null, $Values = []){
 
-		$this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
 		
 		if($Columns){
 			$Columns = implode(", ", $Columns);
 		}
-		
+
 		$Values = "'" . implode ( "', '", $Values ) . "'";
 
 		if($Columns){
@@ -61,7 +61,11 @@ Class Query{
 			$Query = 'INSERT INTO ' . $Table . ' VALUES (' . $Values . ')';
 		}
 		
-		return $Query;
+		$Results = $pdo->prepare($Query);
+		$Results->execute();
+		$Row = $Results->fetchAll();
+
+		return $Row;
 
 	}
 
