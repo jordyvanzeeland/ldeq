@@ -1,10 +1,29 @@
 <div class="container">
 	<div class="row">
 		<div class="content">
-			{% for Item in Project %}
+
+		{% for Item in Project %}
+
+		<a href="../edit/{{ Item.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Gegevens wijzigen</div></a>
+		<a href="../delete/{{ Item.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Project verwijderen</div></a>
+
 		        <h1>{{ Item.ProjectName }}</h1>
 		        {{ Item.ProjectUrl }}
-		        {{ Item.ProjectCat }}
+
+		        <h2>FTP gegevens</h2>
+		        {{ Item.FtpHost }}
+		        {{ Item.FtpUser }}
+		        {{ Item.FtpPass }}
+
+		        <h2>Databse gegevens</h2>
+		        {{ Item.DbHost }}
+		        {{ Item.DbUser }}
+		        {{ Item.DbPass }}
+
+		        <h2>Wordpress gegevens</h2>
+		        {{ Item.WpUser }}
+		        {{ Item.WpPass }}
+
 		    {% endfor %}
 		</div>
 	</div>

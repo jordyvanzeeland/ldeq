@@ -20,8 +20,12 @@ Class ProjectenView{
     }
 
     public function edit($id){
-    	$Project = $this->controller->edit($id);
-    	return (new Twig())->View('Projecten/Edit.html', array('Project' => $Project));
+    	$GetProject = $this->controller->project($id);
+    	return (new Twig())->View('Projecten/Edit.html', array('Project' => $GetProject, $this->controller->edit($id)));
+    }
+
+    public function delete($id){
+    	return (new Twig())->View('Projecten/Delete.html', array('Project' => $this->controller->delete($id)));
     }
 
 }

@@ -24,6 +24,8 @@ Class ProjectenController{
                 [$_POST['projectname'], $_POST['projecturl'], $_POST['ftphost'], $_POST['ftpuser'], $_POST['ftppass'], $_POST['dbhost'], $_POST['dbuser'], $_POST['dbpass'], $_POST['wpuser'], $_POST['wppass']]
             );
 
+            header('Location: /ldeq/');
+
             return $AddProject;
         }
 
@@ -47,12 +49,26 @@ Class ProjectenController{
                 $Project = $DbLogin->Update(
                     'ldeq_projects', 
                     ['ProjectName', 'ProjectUrl', 'FtpHost', 'FtpUser', 'FtpPass', 'DbHost', 'DbUser', 'DbPass', 'WpUser', 'WpPass'], 
-                    ['test','test','test','test','test','test','test','test','test','test'],
+                    [$_POST['projectname'],$_POST['projecturl'],$_POST['ftphost'],$_POST['ftpuser'],$_POST['ftppass'],$_POST['dbhost'],$_POST['dbuser'],$_POST['dbpass'],$_POST['wpuser'],$_POST['wppass']],
                     'id = ' . $id[0]
                 );
 
+                header('Location: /ldeq/projecten/project/' . $id[0]);
+
                 return $Project;
             }
+        }
+    }
+
+    public function Delete($id){
+        if(!empty($id)){
+            $DbLogin = new Query;
+            $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
+            $Delete = $DbLogin->Delete('ldeq_projects', $id[0]);
+
+            header('Location: /ldeq/');
+
+            return $Delete;
         }
     }
 

@@ -93,4 +93,17 @@ Class Query{
 
 	} 
 
+	public function Delete($Table, $Id){
+
+		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$Query = 'Delete FROM ' . $Table . ' WHERE id = ' . $Id;  
+
+		$Results = $pdo->prepare($Query);
+		$Results->execute();
+		$Row = $Results->fetchAll();
+
+		return $Row;
+
+	}
+
 }
