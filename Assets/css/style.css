@@ -80,7 +80,7 @@ table tr:last-child td{
 	border-bottom:none;
 }
 
-select, input[type="text"]{
+select, input[type="text"], input[type="password"]{
 	-webkit-appearance: none;
    -moz-appearance:    none;
    appearance:         none;
