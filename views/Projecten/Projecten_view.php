@@ -14,6 +14,16 @@ Class ProjectenView{
         return (new Twig())->View('Projecten/Add.html', array('Projecten' => $Projecten));
     }
 
+    public function project($id){
+    	$Project = $this->controller->project($id);
+    	return (new Twig())->View('Projecten/Project.html', array('Project' => $Project));
+    }
+
+    public function edit($id){
+    	$Project = $this->controller->edit($id);
+    	return (new Twig())->View('Projecten/Edit.html', array('Project' => $Project));
+    }
+
 }
 
 // 

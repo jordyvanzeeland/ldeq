@@ -1,26 +1,78 @@
 <div class="container">
 	<div class="row">
 		<div class="content">
-		Project toevoegen
 
 		<form method="post" style="padding:0 30px;">
-			<div class="form-group">
-			    <label for="projectname">Projectnaam</label>
-			    <input type="text" name="projectname" class="form-control">
+			<div class="form-section">
+				<h2>Project gegevens</h2>
+				<div class="form-group">
+				    <!-- <label for="projectname">Projectnaam</label> -->
+				    <input type="text" name="projectname" placeholder="Projectnaam" class="form-control">
+				</div>
+
+				<div class="form-group">
+				    <!-- <label for="projecturl">Project URL</label> -->
+				    <input type="text" name="projecturl" placeholder="Project URL" class="form-control">
+				</div>
 			</div>
 
-			<div class="form-group">
-			    <label for="projecturl">Project URL</label>
-			    <input type="text" name="projecturl" class="form-control">
+			<div class="form-section">
+
+				<h2>FTP gegevens</h2>
+
+				<div class="form-group">
+				    <!-- <label for="ftphost">FTP Host</label> -->
+				    <input type="text" name="ftphost" placeholder="FTP Host" class="form-control">
+				</div>
+
+				<div class="form-group">
+				    <!-- <label for="ftpuser">FTP Gebruikersnaam</label> -->
+				    <input type="text" name="ftpuser" placeholder="FTP Gebruikersnaam" class="form-control">
+				</div>
+
+				<div class="form-group">
+				    <!-- <label for="ftppass">FTP Wachtwoord</label> -->
+				    <input type="text" name="ftppass" placeholder="FTP Wachtwoord" class="form-control">
+				</div>
+
 			</div>
 
-			<div class="form-group">
-			    <label for="projectcat">Project categorie</label>
-			    <select multiple class="form-control" name="projectcat" id="projectcat">
-			      <option value="1">Lacle Design</option>
-			      <option value="2">Equalize C.P.D.</option>
-			    </select>
-			  </div>
+			<div class="form-section">
+
+				<h2>Database gegevens</h2>
+
+				<div class="form-group">
+				    <!-- <label for="dbhost">Database Host</label> -->
+				    <input type="text" name="dbhost" placeholder="Database Host" class="form-control">
+				</div>
+
+				<div class="form-group">
+				    <!-- <label for="dbuser">Database Gebruikersnaam</label> -->
+				    <input type="text" name="dbuser" placeholder="Database Gebruikersnaam" class="form-control">
+				</div>
+
+				<div class="form-group">
+				    <!-- <label for="dbpass">Database Wachtwoord</label> -->
+				    <input type="text" name="dbpass" placeholder="Database Wachtwoord" class="form-control">
+				</div>
+
+			</div>
+
+			<div class="form-section">
+
+				<h2>Wordpress gegevens</h2>
+
+				<div class="form-group">
+				    <!-- <label for="wpuser">Wordpress Gebruikersnaam</label> -->
+				    <input type="text" name="wpuser" placeholder="Gebruikersnaam" class="form-control">
+				</div>
+
+				<div class="form-group">
+				    <!-- <label for="wppass">Wordpress Wachtwoord</label> -->
+				    <input type="text" name="wppass" placeholder="Wachtwoord" class="form-control">
+				</div>
+
+			</div>
 
 			<button type="submit" name="submit" class="btn btn-primary">Toevoegen</button>
 		</form>

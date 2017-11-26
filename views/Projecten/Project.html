@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="row">
+		<div class="content">
+			{% for Item in Project %}
+		        <h1>{{ Item.ProjectName }}</h1>
+		        {{ Item.ProjectUrl }}
+		        {{ Item.ProjectCat }}
+		    {% endfor %}
+		</div>
+	</div>
+</div>

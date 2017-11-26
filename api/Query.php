@@ -69,4 +69,28 @@ Class Query{
 
 	}
 
+	public function Update($Table, $Columns = [], $Values = [], $where){
+		
+		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+
+		$Query = '';  
+		$condition = ''; 
+		$i = 0; 
+		foreach($Values as $key => $Value){  
+		    $Query .= $Columns[$i] . "='".$Value."', ";  
+		    $i++;
+		}  
+		$Query = substr($Query, 0, -2);  
+
+		$Query = "UPDATE ".$Table." SET ".$Query." WHERE ".$where."";  
+		
+		$Results = $pdo->prepare($Query);
+		$Results->execute();
+		$Row = $Results->fetchAll();
+
+		return $Row;
+
+
+	} 
+
 }
