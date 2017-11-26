@@ -11,7 +11,6 @@
 						<tr>
 							<th>Projectnaam</th>
 							<th>Project Url</th>
-							<th>Project Categorie</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -19,7 +18,7 @@
 						<tr>
 							<td>{{ Project.ProjectName }}</td>
 							<td>{{ Project.ProjectUrl }}</td>
-							<td><a href="projecten/project/{{ Project.Id }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+							<td style="text-align: right;padding-right:50px;"><a href="projecten/project/{{ Project.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk project</div></td>
 						</tr>
 						{% endfor %}
 					</tbody>

@@ -5,24 +5,39 @@
 		{% for Item in Project %}
 
 		<a href="../edit/{{ Item.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Gegevens wijzigen</div></a>
-		<a href="../delete/{{ Item.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Project verwijderen</div></a>
-
-		        <h1>{{ Item.ProjectName }}</h1>
-		        {{ Item.ProjectUrl }}
-
-		        <h2>FTP gegevens</h2>
-		        {{ Item.FtpHost }}
-		        {{ Item.FtpUser }}
-		        {{ Item.FtpPass }}
-
-		        <h2>Databse gegevens</h2>
-		        {{ Item.DbHost }}
-		        {{ Item.DbUser }}
-		        {{ Item.DbPass }}
-
-		        <h2>Wordpress gegevens</h2>
-		        {{ Item.WpUser }}
-		        {{ Item.WpPass }}
+		<a href="../delete/{{ Item.Id }}"><div class="btn" style="background-color:#d30000;color:#ffffff;font-size:14px;margin-left:20px;"><i class="fa fa-trash" aria-hidden="true"></i> Project verwijderen</div></a>
+		        <table width="100%">
+			        <tr>
+			        	<td><strong>Projectnaam</strong></td><td>{{ Item.ProjectName }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>Project URL</strong></td><td>{{ Item.ProjectUrl }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>FTP Host</strong></td><td>{{ Item.FtpHost }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>FTP Gebruikersnaam</strong></td><td>{{ Item.FtpUser }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>FTP Wachtwoord</strong></td><td>{{ Item.FtpPass }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>Database Host</strong></td><td>{{ Item.DbHost }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>Database Gebruikersnaam</strong></td><td>{{ Item.DbUser }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>Database Wachtwoord</strong></td><td>{{ Item.DbPass }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>Wordpress Gebruikersnaam</strong></td><td>{{ Item.WpUser }}</td>
+			        </tr>
+			        <tr>
+			        	<td><strong>Wordpress Wachtwoord</strong></td><td>{{ Item.WpPass }}</td>
+			        </tr>
+			    </table>
 
 		    {% endfor %}
 		</div>

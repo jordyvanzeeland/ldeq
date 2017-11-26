@@ -32,7 +32,7 @@
 
 				<div class="form-group">
 				    <!-- <label for="ftppass">FTP Wachtwoord</label> -->
-				    <input type="password" class="pass" name="ftppass" value="{{ Project[0].FtpPass }}" placeholder="FTP Wachtwoord" class="form-control">
+				    <input type="password" class="ftppass" name="ftppass" value="{{ Project[0].FtpPass }}" placeholder="FTP Wachtwoord" class="form-control"><i class="viewFtpPass fa fa-eye" aria-hidden="true"></i>
 				</div>
 
 			</div>
@@ -53,7 +53,7 @@
 
 				<div class="form-group">
 				    <!-- <label for="dbpass">Database Wachtwoord</label> -->
-				    <input type="password" class="pass" name="dbpass" value="{{ Project[0].DbPass }}" placeholder="Database Wachtwoord" class="form-control">
+				    <input type="password" class="dbpass" name="dbpass" value="{{ Project[0].DbPass }}" placeholder="Database Wachtwoord" class="form-control"><i class="viewDbPass fa fa-eye" aria-hidden="true"></i>
 				</div>
 
 			</div>
@@ -69,12 +69,12 @@
 
 				<div class="form-group">
 				    <!-- <label for="wppass">Wordpress Wachtwoord</label> -->
-				    <input type="password" class="pass" name="wppass" value="{{ Project[0].WpPass }}" placeholder="Wachtwoord" class="form-control">
+				    <input type="password" class="wppass" name="wppass" value="{{ Project[0].WpPass }}" placeholder="Wachtwoord" class="form-control"><i class="viewWpPass fa fa-eye" aria-hidden="true"></i>
 				</div>
 
 			</div>
 
-			<button type="submit" name="submit" class="btn btn-primary">Toevoegen</button>
+			<button type="submit" name="submit" class="btn btn-primary">Wijzigen</button>
 		</form>
 		</div>
 	</div>
@@ -82,12 +82,28 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	console.log('test');
-	$('.pass').on('click', function () {
-		if ($(this).attr("type")=="password"){
-			$(this).attr('type', 'text'); 
+
+	$('.viewFtpPass').on('click', function () {
+		if ($('.ftppass').attr("type") === "password"){
+			$('.ftppass').attr('type', 'text'); 
 		}else{
-			$(this).attr('type', 'password'); 
+			$('.ftppass').attr('type', 'password'); 
+		}
+	});
+
+	$('.viewDbPass').on('click', function () {
+		if ($('.dbpass').attr("type") === "password"){
+			$('.dbpass').attr('type', 'text'); 
+		}else{
+			$('.dbpass').attr('type', 'password'); 
+		}
+	});
+
+	$('.viewWpPass').on('click', function () {
+		if ($('.wppass').attr("type") === "password"){
+			$('.wppass').attr('type', 'text'); 
+		}else{
+			$('.wppass').attr('type', 'password'); 
 		}
 	});
 });
