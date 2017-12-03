@@ -16,7 +16,6 @@ Class Twig{
     }
 
 	public function View($Template, $Action){
-		//$Data = implode(", ", $Action);
 		return $this->twig->render($Template, $Action);
 	}
 

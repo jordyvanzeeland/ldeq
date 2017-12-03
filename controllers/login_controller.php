@@ -5,11 +5,14 @@ use ldeq\api\Authentication;
 Class LoginController{
 
     public function index(){
+
+    	$array = [];
         
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            return (new Authentication())->Authenticate();
+            echo (new Authentication())->Authenticate();
+        }else{
+        	return $array;
         }
-
     }
 
 }

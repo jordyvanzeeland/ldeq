@@ -9,10 +9,12 @@
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/ldeq/Assets/css/style.css" />
 	</head>
-<body>
 
+<body>
+<?php if($_SERVER["REQUEST_URI"] != '/ldeq/login/index'){ ?>
 <div class="header" style="padding:24px 0;">
 	<div class="container">
 		<img src="/ldeq/Assets/images/logo.png">
 	</div>
 </div>
+<?php } ?>

@@ -24,6 +24,25 @@ a{
 	height:100%;
 }
 
+.login .header{
+	display:none;
+}
+
+.login_form{
+	float:right;
+	width:50%;
+	margin-top:20%;
+}
+
+.login_form label{
+	width:100%;
+}
+
+.login_form input[type="text"], .login_form input[type="password"]{
+	width:100%;
+	padding-left: 10px;
+}
+
 .header{
 	background: url(../images/header.jpg);
 	background-position: center bottom;

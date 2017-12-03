@@ -33,11 +33,9 @@ Class Authentication{
 		    	$DbLogin = new Query;
 		    	$pdo = $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
 		    	$Query = (new Query())->Select('ldeq_users', ['username', 'password'], 'username="' . $_POST["username"] . '"');
-		    	$Sql = $pdo->prepare($Query);
-		    	$Sql->execute();
-		    	$row = $Sql->fetch(PDO::FETCH_ASSOC);
+		    	//$row = $Query->fetch(PDO::FETCH_ASSOC);
 
-		    		if(password_verify($_POST['password'], $row['password'])){
+		    		if(password_verify($_POST['password'], $Query[0]['password'])){
 		    			$Session = new Session();
 		    			$Session->__set('username', $username);
 
@@ -51,4 +49,5 @@ Class Authentication{
 	    		echo 'Er is geen gebruiker gevonden met deze gebruikersnaam';
 	    	}
 	}
+
 }
