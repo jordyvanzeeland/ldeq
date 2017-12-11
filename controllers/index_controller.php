@@ -4,6 +4,8 @@ use ldeq\api\Session;
 use ldeq\api\Query;
 use ldeq\api\Twig;
 
+use ldeq\model\Project;
+
 Class IndexController{
 
     public function index(){
@@ -14,11 +16,8 @@ Class IndexController{
     		header('Location: /ldeq/login/index');
     	}
 
-    	$DbLogin = new Query;
-		$DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
-		$GetProjects = $DbLogin->Select('ldeq_projects', ['*']);
-
-		return $GetProjects;
+    	$getProjects = new Project();
+        return $getProjects->getAllProjects();
 
     }
 

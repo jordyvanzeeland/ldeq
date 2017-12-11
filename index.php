@@ -33,11 +33,11 @@ if($url == '/'){
 
 	if (file_exists($ctrlPath)){
 
-	    require_once __DIR__.'/Models/'.$requestedController.'_model.php';
+	    require_once __DIR__.'/Models/'.$requestedController.'.php';
 	    require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
 	    require_once __DIR__.'/Views/'.$requestedController.'/'.$requestedController.'_view.php';
 
-	    $modelName      = ucfirst($requestedController).'Model';
+	    $modelName      = ucfirst($requestedController);
 	    $controllerName = ucfirst($requestedController).'Controller';
 	    $viewName       = ucfirst($requestedController).'View';
 
@@ -55,8 +55,7 @@ if($url == '/'){
 
 	}else{
 
-	    header('HTTP/1.1 404 Not Found');
-	    die('404 - The file - '.$ctrlPath.' - not found');
+	    include('views/404.html');
 	}
 }
 

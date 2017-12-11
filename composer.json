@@ -1,7 +1,8 @@
 {
 	"autoload": {
     	"psr-4": {
-    		"ldeq\\api\\": "api/"
+    		"ldeq\\api\\": "api/",
+    		"ldeq\\model\\": "Models/"
     	}
 	},
 	"require": {

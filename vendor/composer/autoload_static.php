@@ -13,6 +13,7 @@ class ComposerStaticInitb77b0918347df171d986d3f1f5afa9e8
     public static $prefixLengthsPsr4 = array (
         'l' => 
         array (
+            'ldeq\\model\\' => 11,
             'ldeq\\api\\' => 9,
         ),
         'T' => 
@@ -26,6 +27,10 @@ class ComposerStaticInitb77b0918347df171d986d3f1f5afa9e8
     );
 
     public static $prefixDirsPsr4 = array (
+        'ldeq\\model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Models',
+        ),
         'ldeq\\api\\' => 
         array (
             0 => __DIR__ . '/../..' . '/api',
