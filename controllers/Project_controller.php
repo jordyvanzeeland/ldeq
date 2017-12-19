@@ -16,8 +16,7 @@ Class ProjectController{
     		header('Location: /ldeq/login/index');
     	}
 
-      $addProjects = new ProjectModel();
-      return $addProjects->getAllProjects();
+      return (new ProjectModel())->addProject();
 
     }
 

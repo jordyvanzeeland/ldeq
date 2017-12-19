@@ -4,9 +4,8 @@ use ldeq\api\Twig;
 
 Class LoginView{
 
-    function __construct($controller, $model){
+    function __construct($controller){
         $this->controller = $controller;
-        $this->model = $model;
     }
 
     public function index(){
