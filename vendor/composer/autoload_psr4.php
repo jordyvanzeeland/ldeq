@@ -6,8 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ldeq\\model\\' => array($baseDir . '/Models'),
+    'ldeq\\models\\' => array($baseDir . '/models'),
     'ldeq\\api\\' => array($baseDir . '/api'),
+    'ldeq\\' => array($baseDir . '/'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
 );

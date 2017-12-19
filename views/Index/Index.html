@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col content">
-			<a href="projecten/add"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-plus" aria-hidden="true"></i> Nieuw</div></a>
+			<a href="project/add"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-plus" aria-hidden="true"></i> Nieuw</div></a>
 			<div style="display:inline-block;float:right;width:30%;margin-right:20px;font-size:13px;margin-right:50px;">
 				<input type="text" class="search" name="search" placeholder="Zoeken..." />
 			</div>
@@ -18,7 +18,7 @@
 						<tr>
 							<td>{{ Project.ProjectName }}</td>
 							<td>{{ Project.ProjectUrl }}</td>
-							<td style="text-align: right;padding-right:50px;"><a href="projecten/project/{{ Project.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk project</div></td>
+							<td style="text-align: right;padding-right:50px;"><a href="project/details/{{ Project.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk project</div></td>
 						</tr>
 						{% endfor %}
 					</tbody>

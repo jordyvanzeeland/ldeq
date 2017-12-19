@@ -1,10 +1,10 @@
 <?php
 
-use ldeq\api\Session;
-use ldeq\api\Query;
-use ldeq\api\Twig;
+namespace ldeq\models;
 
-Class ProjectenController{
+use ldeq\api\Query;
+
+Class ProjectModel{
 
     public function Encrypt_decrypt($action, $string) {
           $output = false;
@@ -25,15 +25,32 @@ Class ProjectenController{
           return $output;
       }
 
-    public function add(){
+	public function getAllProjects(){
 
-    	$Session = new Session();
+		$DbLogin = new Query;
+		$DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
+		$GetProjects = $DbLogin->Select('ldeq_projects', ['*']);
 
-    	if(!$Session->__get('username')){
-    		header('Location: /ldeq/login/index');
-    	}
+		return $GetProjects;
 
-        if(isset($_POST['submit'])){
+	}
+
+	public function getProject($id = null){
+		if(!empty($id)){
+            $DbLogin = new Query;
+            $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
+            $Project = $DbLogin->select('ldeq_projects', ['*'], 'id=' . $id[0]);
+            $Project[0]['FtpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['FtpPass']);
+            $Project[0]['DbPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['DbPass']);
+            $Project[0]['WpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['WpPass']);
+
+            return $Project;
+        }
+	}
+
+	public function addProject(){
+
+		if(isset($_POST['submit'])){
 
             $EncryptedFtpPass = $this->Encrypt_decrypt('encrypt', $_POST['ftppass']);
             $EncryptedDbPass = $this->Encrypt_decrypt('encrypt', $_POST['dbpass']);
@@ -52,23 +69,11 @@ Class ProjectenController{
             return $AddProject;
         }
 
-    }
+	}
 
-    public function project($id = null){
-        if(!empty($id)){
-            $DbLogin = new Query;
-            $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
-            $Project = $DbLogin->select('ldeq_projects', ['*'], 'id=' . $id[0]);
-            $Project[0]['FtpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['FtpPass']);
-            $Project[0]['DbPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['DbPass']);
-            $Project[0]['WpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['WpPass']);
+	public function updateProject($id = null){
 
-            return $Project;
-        }
-    }
-
-    public function edit($id = null){
-        if(!empty($id)){
+		if(!empty($id)){
             if(isset($_POST['submit'])){
 
                 $EncryptedFtpPass = $this->Encrypt_decrypt('encrypt', $_POST['ftppass']);
@@ -89,10 +94,12 @@ Class ProjectenController{
                 return $Project;
             }
         }
-    }
 
-    public function Delete($id){
-        if(!empty($id)){
+	}
+
+	public function deleteProject($id = null){
+
+		if(!empty($id)){
             $DbLogin = new Query;
             $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
             $Delete = $DbLogin->Delete('ldeq_projects', $id[0]);
@@ -101,6 +108,7 @@ Class ProjectenController{
 
             return $Delete;
         }
-    }
+
+	}
 
 }

@@ -1,8 +1,13 @@
-<?php session_start();
+<?php
+
+namespace ldeq;
+
+session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 use ldeq\api\Session;
+use ldeq\models\ProjectModel;
 
 include('views/header.php');
 
@@ -19,9 +24,9 @@ if($url == '/'){
 		require_once __DIR__.'/Controllers/index_controller.php';
 		require_once __DIR__.'/Views/Index/index_view.php';
 
-		$indexModel = New IndexModel();
-		$indexController = New IndexController($indexModel);
-		$indexView = New IndexView($indexController, $indexModel);
+		$indexModel = New \IndexModel();
+		$indexController = New \IndexController($indexModel);
+		$indexView = New \IndexView($indexController, $indexModel);
 
 		print $indexView->index();
 	}
@@ -33,19 +38,23 @@ if($url == '/'){
 
 	if (file_exists($ctrlPath)){
 
-	    require_once __DIR__.'/Models/'.$requestedController.'.php';
+	    require_once __DIR__.'/Models/'.$requestedController.'_model.php';
 	    require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
 	    require_once __DIR__.'/Views/'.$requestedController.'/'.$requestedController.'_view.php';
 
-	    $modelName      = ucfirst($requestedController);
-	    $controllerName = ucfirst($requestedController).'Controller';
-	    $viewName       = ucfirst($requestedController).'View';
+	 //    $ProjectModel = New ProjectModel();
+		// $ProjectController = New \ProjectController($ProjectModel);
+		// $ProjectView = New \ProjectView($ProjectController, $ProjectModel);
 
-	    $controllerObj  = new $controllerName( new $modelName );
-	    $viewObj        = new $viewName( $controllerObj, new $modelName );
+		// print $ProjectView->details();
 
+	    $modelName      = ucfirst($requestedController).'Model';
+	    $controllerName = \ucfirst($requestedController).'Controller';
+	    $viewName       = \ucfirst($requestedController).'View';
 
-	    // If there is a method - Second parameter
+	    $controllerObj  = new $controllerName();
+	    $viewObj        = new $viewName( $controllerObj);
+
 	    if ($requestedAction != ''){
 	        // then we call the method via the view
 	        // dynamic call of the view

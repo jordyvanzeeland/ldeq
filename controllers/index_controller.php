@@ -4,7 +4,7 @@ use ldeq\api\Session;
 use ldeq\api\Query;
 use ldeq\api\Twig;
 
-use ldeq\model\Project;
+use ldeq\models\ProjectModel;
 
 Class IndexController{
 
@@ -16,16 +16,9 @@ Class IndexController{
     		header('Location: /ldeq/login/index');
     	}
 
-    	$getProjects = new Project();
+    	$getProjects = new ProjectModel();
         return $getProjects->getAllProjects();
 
-    }
-
-    public function LiveSearch(){
-    	$DbLogin = new Query;
-		$DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
-		$GetProjects = $DbLogin->Select('ldeq_projects', ['*'], 'ProjectName LIKE "%' . $_POST['Search'] . '%"');
-		return $GetProjects;
     }
 
 }
