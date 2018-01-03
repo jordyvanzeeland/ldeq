@@ -12,10 +12,6 @@ Class ProjectController{
 
     	$Session = new Session();
 
-    	if(!$Session->__get('username')){
-    		header('Location: /ldeq/login/index');
-    	}
-
       return (new ProjectModel())->addProject();
 
     }

@@ -9,7 +9,7 @@ Class LoginView{
     }
 
     public function index(){
-        return (new Twig())->View('Login/Login.html', $this->controller->index());
+        return (new Twig())->View('login/login.html', $this->controller->index());
     }
 
 }

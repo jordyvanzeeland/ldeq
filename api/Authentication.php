@@ -25,7 +25,7 @@ Class Authentication{
     
 		    if(empty(trim($_POST['password']))){
 		        $password_err = 'Please enter your password.';
-		    } else
+		    } else{
 		        $password = trim($_POST['password']);
 		    }
 
@@ -39,7 +39,7 @@ Class Authentication{
 		    			$Session = new Session();
 		    			$Session->__set('username', $username);
 
-		    			header('Location: /ldeq/');
+		    			header('Location: /wachtwoorden/');
 		    			
                         
 		    		}else{
@@ -48,6 +48,7 @@ Class Authentication{
 	    	}else{
 	    		echo 'Er is geen gebruiker gevonden met deze gebruikersnaam';
 	    	}
+	    }
 	}
 
 }

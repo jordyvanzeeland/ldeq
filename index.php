@@ -13,34 +13,42 @@ include('views/header.php');
 
 $Session = new Session();
 
-$url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'],'/')) : '/';
+if(!isset($_SESSION['username'])) {
+	require_once __DIR__.'/models/Login_model.php';
+	require_once __DIR__.'/controllers/login_controller.php';
+	require_once __DIR__.'/views/login/login_view.php';
 
-if($url == '/'){
+	$LoginModel = New \LoginModel();
+	$LoginController = New \LoginController($LoginModel);
+	$LoginView = New \LoginView($LoginController, $LoginModel);
 
-	if(!$Session->__get('username')){
-    		header('Location: /ldeq/login/index');
-    }else{	
-		require_once __DIR__.'/Models/index_model.php';
-		require_once __DIR__.'/Controllers/index_controller.php';
-		require_once __DIR__.'/Views/Index/index_view.php';
+	print $LoginView->index();
+}
+
+$url = isset($_SERVER['REQUEST_URI']) ? explode('/', ltrim($_SERVER['REQUEST_URI'],'/')) : '/';
+
+if($_SERVER['REQUEST_URI'] == '/wachtwoorden/'){
+
+		require_once __DIR__.'/models/index_model.php';
+		require_once __DIR__.'/controllers/index_controller.php';
+		require_once __DIR__.'/views/index/index_view.php';
 
 		$indexModel = New \IndexModel();
 		$indexController = New \IndexController($indexModel);
 		$indexView = New \IndexView($indexController, $indexModel);
 
 		print $indexView->index();
-	}
 }else{
-	$requestedController = $url[0]; 
-	$requestedAction = isset($url[1])? $url[1] :'';
+	$requestedController = $url[1]; 
+	$requestedAction = isset($url[2])? $url[2] :'';
 	$requestedParams = array_slice($url, 2); 
-	$ctrlPath = __DIR__.'/Controllers/'.$requestedController.'_controller.php';
+	$ctrlPath = __DIR__.'/controllers/'.$requestedController.'_controller.php';
 
-	if (file_exists($ctrlPath)){
+	if (file_exists($ctrlPath)){	
 
-	    require_once __DIR__.'/Models/'.$requestedController.'_model.php';
-	    require_once __DIR__.'/Controllers/'.$requestedController.'_controller.php';
-	    require_once __DIR__.'/Views/'.$requestedController.'/'.$requestedController.'_view.php';
+	    require_once __DIR__.'/models/'.ucfirst($requestedController).'_model.php';
+	    require_once __DIR__.'/controllers/'.$requestedController.'_controller.php';
+	    require_once __DIR__.'/views/'.$requestedController.'/'.$requestedController.'_view.php';
 
 	 //    $ProjectModel = New ProjectModel();
 		// $ProjectController = New \ProjectController($ProjectModel);

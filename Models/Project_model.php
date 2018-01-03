@@ -39,7 +39,7 @@ Class ProjectModel{
 		if(!empty($id)){
             $DbLogin = new Query;
             $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
-            $Project = $DbLogin->select('ldeq_projects', ['*'], 'id=' . $id[0]);
+            $Project = $DbLogin->select('ldeq_projects', ['*'], 'id=' . $id[1]);
             $Project[0]['FtpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['FtpPass']);
             $Project[0]['DbPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['DbPass']);
             $Project[0]['WpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['WpPass']);
@@ -64,7 +64,7 @@ Class ProjectModel{
                 [$_POST['projectname'], $_POST['projecturl'], $_POST['ftphost'], $_POST['ftpuser'], $EncryptedFtpPass, $_POST['dbhost'], $_POST['dbuser'], $EncryptedDbPass, $_POST['wpuser'], $EncryptedWpPass]
             );
 
-            header('Location: /ldeq/');
+            header('Location: /wachtwoorden/');
 
             return $AddProject;
         }
@@ -89,7 +89,7 @@ Class ProjectModel{
                     'id = ' . $id[0]
                 );
 
-                header('Location: /ldeq/projecten/project/' . $id[0]);
+                header('Location: /wachtwoorden/project/details/' . $id[1]);
 
                 return $Project;
             }
@@ -104,7 +104,7 @@ Class ProjectModel{
             $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
             $Delete = $DbLogin->Delete('ldeq_projects', $id[0]);
 
-            header('Location: /ldeq/');
+            header('Location: /wachtwoorden/');
 
             return $Delete;
         }

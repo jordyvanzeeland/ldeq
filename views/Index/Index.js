@@ -7,7 +7,7 @@ $(document).ready(function(){
 		if(Search != ''){
 			$('.SearchResults').html('');
 			$.ajax({
-				url: '/ldeq/views/LiveSearch.php',
+				url: '/wachtwoorden/views/LiveSearch.php',
 				method: 'POST',
 				data: {action: Search, Search: Search},
 				success:function(results){

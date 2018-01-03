@@ -21,7 +21,7 @@
 							<td>{{ loop.index }}</td>
 							<td>{{ Project.ProjectName }}</td>
 							<td>{{ Project.ProjectUrl }}</td>
-							<td><a href="project/details/{{ Project.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk project</div></td>
+							<td><a href="/wachtwoorden/project/details/{{ Project.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk project</div></td>
 						</tr>
 						{% endfor %}
 					</tbody>
@@ -31,4 +31,4 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="views/Index/Index.js"></script>
+<script type="text/javascript" src="views/index/index.js"></script>

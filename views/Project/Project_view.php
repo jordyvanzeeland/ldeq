@@ -10,21 +10,21 @@ Class ProjectView{
 
     public function add(){
     	$Projecten = $this->controller->add();
-        return (new Twig())->View('Project/Add.html', array('Project' => $Projecten));
+        return (new Twig())->View('project/add.html', array('Project' => $Projecten));
     }
 
     public function details($id){
     	$Project = $this->controller->project($id);
-    	return (new Twig())->View('Project/Project.html', array('Project' => $Project));
+    	return (new Twig())->View('project/project.html', array('Project' => $Project));
     }
 
     public function edit($id){
     	$GetProject = $this->controller->project($id);
-    	return (new Twig())->View('Project/Edit.html', array('Project' => $GetProject, $this->controller->edit($id)));
+    	return (new Twig())->View('project/edit.html', array('Project' => $GetProject, $this->controller->edit($id)));
     }
 
     public function delete($id){
-    	return (new Twig())->View('Project/Delete.html', array('Project' => $this->controller->delete($id)));
+    	return (new Twig())->View('project/delete.html', array('Project' => $this->controller->delete($id)));
     }
 
 }

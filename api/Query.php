@@ -12,10 +12,10 @@ Class Query{
 	public $DbName;
 
 	public function __construct(){
-		$this->DbHost = 'localhost';
-		$this->DbUser = 'root';
-		$this->DbPass = '';
-		$this->DbName = 'ldeq';
+		$this->DbHost = 'localhost:3306';
+		$this->DbUser = 'ldeq_pws';
+		$this->DbPass = 'hEqa88?3';
+		$this->DbName = 'ldeq_pws';
 	}
 
 	public function Connect($DbHost, $DbUser, $DbPass, $DbName){
