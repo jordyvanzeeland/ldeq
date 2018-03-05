@@ -6,10 +6,3 @@ This password system is build with my own developed framework. This system creat
 About my framework:
 
 My framework is buid in PHP en uses Object Orientated Programming and the MVC design pattern. The frontend is build with HTML, CSS, jQuery and also uses the Twig templating system.
-
-Note to myself: 
-Things to do:
-
-- 404 customized page
-- Responsiveness
-- Framework adjustments (Code Quality)
