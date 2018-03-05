@@ -28,7 +28,6 @@ Class ProjectModel{
 	public function getAllProjects(){
 
 		$DbLogin = new Query;
-		$DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
 		$GetProjects = $DbLogin->Select('ldeq_projects', ['*']);
 
 		return $GetProjects;
@@ -38,7 +37,6 @@ Class ProjectModel{
 	public function getProject($id = null){
 		if(!empty($id)){
             $DbLogin = new Query;
-            $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
             $Project = $DbLogin->select('ldeq_projects', ['*'], 'id=' . $id[1]);
             $Project[0]['FtpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['FtpPass']);
             $Project[0]['DbPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['DbPass']);
@@ -57,7 +55,6 @@ Class ProjectModel{
             $EncryptedWpPass = $this->Encrypt_decrypt('encrypt', $_POST['wppass']);
 
             $DbLogin = new Query;
-            $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
             $AddProject = $DbLogin->Insert(
                 'ldeq_projects', 
                 ['ProjectName', 'ProjectUrl', 'FtpHost', 'FtpUser', 'FtpPass', 'DbHost', 'DbUser', 'DbPass', 'WpUser', 'WpPass'],  
@@ -81,7 +78,6 @@ Class ProjectModel{
                 $EncryptedWpPass = $this->Encrypt_decrypt('encrypt', $_POST['wppass']);
 
                 $DbLogin = new Query;
-                $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
                 $Project = $DbLogin->Update(
                     'ldeq_projects', 
                     ['ProjectName', 'ProjectUrl', 'FtpHost', 'FtpUser', 'FtpPass', 'DbHost', 'DbUser', 'DbPass', 'WpUser', 'WpPass'], 
@@ -101,7 +97,6 @@ Class ProjectModel{
 
 		if(!empty($id)){
             $DbLogin = new Query;
-            $DbLogin->Connect($DbLogin->DbHost, $DbLogin->DbUser, $DbLogin->DbPass, $DbLogin->DbName);
             $Delete = $DbLogin->Delete('ldeq_projects', $id[0]);
 
             header('Location: /wachtwoorden/');

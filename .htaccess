@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteBase /wachtwoorden/
+RewriteBase /ldeq/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /wachtwoorden/index.php [L]
+RewriteRule . /ldeq/index.php [L]

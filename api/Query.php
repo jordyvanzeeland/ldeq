@@ -4,31 +4,32 @@ namespace ldeq\api;
 
 use PDO;
 
-Class Query{
+interface QueryInterface{
+    public function Connect();
+    public function Select($Table, $Columns = [], $Where = null);
+    public function Insert($Table, $Columns = null, $Values = []);
+    public function Update($Table, $Columns = [], $Values = [], $where);
+    public function Delete($Table, $Id);
+}
 
-	public $DbHost;
-	public $DbUser;
-	public $DbPass;
-	public $DbName;
+Class Query implements QueryInterface{
 
-	public function __construct(){
-		$this->DbHost = 'localhost:3306';
-		$this->DbUser = 'ldeq_pws';
-		$this->DbPass = 'hEqa88?3';
-		$this->DbName = 'ldeq_pws';
-	}
+	public function Connect(){
 
-	public function Connect($DbHost, $DbUser, $DbPass, $DbName){
-
-		$pdo = new PDO('mysql:host=' . $DbHost . ';dbname=' . $DbName . ';charset=utf8mb4', $DbUser, $DbPass);
-
-		return $pdo;
+		global $db_config;
+	    if ($db_config['env'] == "development") {
+	      $config = $db_config['development'];
+	    }else{
+	      $config = $db_config['production'];
+	    }
+	    $pdo = new PDO('mysql:host=' . $config['host'] . ';dbname=' . $config['database'] . ';charset=utf8mb4', $config['username'], $config['password']);
+	    return $pdo;
 
 	}
 
 	public function Select($Table, $Columns = [], $Where = null){
 		
-		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$pdo = $this->Connect();
 		$Columns = implode(", ", $Columns);
 
 		if($Where){
@@ -47,7 +48,7 @@ Class Query{
 
 	public function Insert($Table, $Columns = null, $Values = []){
 
-		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$pdo = $this->Connect();
 		
 		if($Columns){
 			$Columns = implode(", ", $Columns);
@@ -71,7 +72,7 @@ Class Query{
 
 	public function Update($Table, $Columns = [], $Values = [], $where){
 		
-		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$pdo = $this->Connect();
 
 		$Query = '';  
 		$condition = ''; 
@@ -95,7 +96,7 @@ Class Query{
 
 	public function Delete($Table, $Id){
 
-		$pdo = $this->Connect($this->DbHost, $this->DbUser, $this->DbPass, $this->DbName);
+		$pdo = $this->Connect();
 		$Query = 'Delete FROM ' . $Table . ' WHERE id = ' . $Id;  
 
 		$Results = $pdo->prepare($Query);

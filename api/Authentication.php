@@ -39,7 +39,7 @@ Class Authentication{
 		    			$Session = new Session();
 		    			$Session->__set('username', $username);
 
-		    			header('Location: /wachtwoorden/');
+		    			header('Location: /ldeq/');
 		    			
                         
 		    		}else{

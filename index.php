@@ -5,6 +5,7 @@ namespace ldeq;
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once 'config.php';
 
 use ldeq\api\Session;
 use ldeq\models\ProjectModel;
@@ -27,7 +28,7 @@ if(!isset($_SESSION['username'])) {
 
 $url = isset($_SERVER['REQUEST_URI']) ? explode('/', ltrim($_SERVER['REQUEST_URI'],'/')) : '/';
 
-if($_SERVER['REQUEST_URI'] == '/wachtwoorden/'){
+if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 
 		require_once __DIR__.'/models/index_model.php';
 		require_once __DIR__.'/controllers/index_controller.php';
