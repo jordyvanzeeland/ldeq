@@ -8,6 +8,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once 'config.php';
 
 use ldeq\api\Session;
+use ldeq\api\Controller;
 use ldeq\models\ProjectModel;
 
 include('views/header.php');
@@ -51,12 +52,6 @@ if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 	    require_once __DIR__.'/controllers/'.$requestedController.'_controller.php';
 	    require_once __DIR__.'/views/'.$requestedController.'/'.$requestedController.'_view.php';
 
-	 //    $ProjectModel = New ProjectModel();
-		// $ProjectController = New \ProjectController($ProjectModel);
-		// $ProjectView = New \ProjectView($ProjectController, $ProjectModel);
-
-		// print $ProjectView->details();
-
 	    $modelName      = ucfirst($requestedController).'Model';
 	    $controllerName = \ucfirst($requestedController).'Controller';
 	    $viewName       = \ucfirst($requestedController).'View';
@@ -65,10 +60,7 @@ if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 	    $viewObj        = new $viewName( $controllerObj);
 
 	    if ($requestedAction != ''){
-	        // then we call the method via the view
-	        // dynamic call of the view
 	        print $viewObj->$requestedAction($requestedParams);
-
 	    }
 
 	}else{
@@ -76,5 +68,8 @@ if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 	    include('views/404.html');
 	}
 }
+
+// $controller = new Controller($url);
+// $controller->showController($url);
 
 include('views/footer.php');

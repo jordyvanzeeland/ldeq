@@ -27,8 +27,7 @@ Class ProjectModel{
 
 	public function getAllProjects(){
 
-		$DbLogin = new Query;
-		$GetProjects = $DbLogin->Select('ldeq_projects', ['*']);
+		$GetProjects = (new Query)->Select('ldeq_projects', ['*']);
 
 		return $GetProjects;
 
@@ -36,8 +35,7 @@ Class ProjectModel{
 
 	public function getProject($id = null){
 		if(!empty($id)){
-            $DbLogin = new Query;
-            $Project = $DbLogin->select('ldeq_projects', ['*'], 'id=' . $id[1]);
+            $Project = (new Query)->select('ldeq_projects', ['*'], 'id=' . $id[1]);
             $Project[0]['FtpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['FtpPass']);
             $Project[0]['DbPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['DbPass']);
             $Project[0]['WpPass'] = $this->Encrypt_decrypt('decrypt', $Project[0]['WpPass']);
@@ -54,14 +52,13 @@ Class ProjectModel{
             $EncryptedDbPass = $this->Encrypt_decrypt('encrypt', $_POST['dbpass']);
             $EncryptedWpPass = $this->Encrypt_decrypt('encrypt', $_POST['wppass']);
 
-            $DbLogin = new Query;
-            $AddProject = $DbLogin->Insert(
+            $AddProject = (new Query)->Insert(
                 'ldeq_projects', 
                 ['ProjectName', 'ProjectUrl', 'FtpHost', 'FtpUser', 'FtpPass', 'DbHost', 'DbUser', 'DbPass', 'WpUser', 'WpPass'],  
                 [$_POST['projectname'], $_POST['projecturl'], $_POST['ftphost'], $_POST['ftpuser'], $EncryptedFtpPass, $_POST['dbhost'], $_POST['dbuser'], $EncryptedDbPass, $_POST['wpuser'], $EncryptedWpPass]
             );
 
-            header('Location: /wachtwoorden/');
+            header('Location: /ldeq/');
 
             return $AddProject;
         }
@@ -70,36 +67,33 @@ Class ProjectModel{
 
 	public function updateProject($id = null){
 
-		if(!empty($id)){
+		  if(!empty($id)){
             if(isset($_POST['submit'])){
 
                 $EncryptedFtpPass = $this->Encrypt_decrypt('encrypt', $_POST['ftppass']);
                 $EncryptedDbPass = $this->Encrypt_decrypt('encrypt', $_POST['dbpass']);
                 $EncryptedWpPass = $this->Encrypt_decrypt('encrypt', $_POST['wppass']);
 
-                $DbLogin = new Query;
-                $Project = $DbLogin->Update(
+                $Project = (new Query)->Update(
                     'ldeq_projects', 
                     ['ProjectName', 'ProjectUrl', 'FtpHost', 'FtpUser', 'FtpPass', 'DbHost', 'DbUser', 'DbPass', 'WpUser', 'WpPass'], 
                     [$_POST['projectname'], $_POST['projecturl'], $_POST['ftphost'], $_POST['ftpuser'], $EncryptedFtpPass, $_POST['dbhost'], $_POST['dbuser'], $EncryptedDbPass, $_POST['wpuser'], $EncryptedWpPass],
-                    'id = ' . $id[0]
+                    'id = ' . $id[1]
                 );
 
-                header('Location: /wachtwoorden/project/details/' . $id[1]);
+                header('Location: /ldeq/project/details/' . $id[1]);
 
                 return $Project;
             }
-        }
-
+      }
 	}
 
 	public function deleteProject($id = null){
 
 		if(!empty($id)){
-            $DbLogin = new Query;
-            $Delete = $DbLogin->Delete('ldeq_projects', $id[0]);
+            $Delete = (new Query)->Delete('ldeq_projects', $id[1]);
 
-            header('Location: /wachtwoorden/');
+            header('Location: /ldeq/');
 
             return $Delete;
         }
