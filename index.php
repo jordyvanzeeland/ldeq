@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 	    require_once __DIR__.'/controllers/'.$requestedController.'_controller.php';
 	    require_once __DIR__.'/views/'.$requestedController.'/'.$requestedController.'_view.php';
 
-	    $modelName      = ucfirst($requestedController).'Model';
+	    $modelName      = \ucfirst($requestedController).'Model';
 	    $controllerName = \ucfirst($requestedController).'Controller';
 	    $viewName       = \ucfirst($requestedController).'View';
 
