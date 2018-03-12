@@ -61,6 +61,9 @@ if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 
 	    if ($requestedAction != ''){
 	        print $viewObj->$requestedAction($requestedParams);
+	    }else{
+	    	$requestedAction = 'index';
+	    	print $viewObj->$requestedAction($requestedParams);
 	    }
 
 	}else{

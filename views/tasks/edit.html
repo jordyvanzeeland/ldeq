@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div class="content">
+
+		<form method="post" style="padding:0 30px;">
+			<div class="form-section">
+				<h2>Wijzig Taak</h2>
+				<div class="form-group">
+				    <!-- <label for="projectname">Projectnaam</label> -->
+				    <input type="text" name="taskname" value="{{ Task[0].task_name }}" placeholder="Taaknaam" class="form-control">
+				</div>
+				<div class="form-group">
+				    <!-- <label for="projectname">Projectnaam</label> -->
+				    <textarea name="taskdescription" placeholder="Taak beschrijving" class="form-control">{{ Task[0].task_description }}</textarea>
+				</div>
+			</div>
+
+			
+
+			<button type="submit" name="submit" class="btn btn-primary">Wijzigen</button>
+		</form>
+		</div>
+	</div>
+</div>
