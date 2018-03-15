@@ -16,6 +16,18 @@ Class TasksController{
 
     }
 
+    public function addTaskHours($task_id = null){
+
+      return (new TasksModel())->addHours($task_id);
+
+    }
+
+    public function deleteTaskHours($id, $task_id = null){
+
+      return (new TasksModel())->deleteHours($id, $task_id);
+
+    }
+
     public function task($id = null){
 
         return (new TasksModel())->getTask($id);

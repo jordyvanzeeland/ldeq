@@ -14,16 +14,18 @@
 
 		<a href="../edit/{{ Task.id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Taak wijzigen</div></a>
 		<a href="../delete/{{ Task.id }}"><div class="btn" style="background-color:#d30000;color:#ffffff;font-size:14px;margin-left:20px;"><i class="fa fa-trash" aria-hidden="true"></i> Taak verwijderen</div></a>
+		<a href="../addHours/{{ Task.id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:20px;"><i class="fa fa-plus" aria-hidden="true"></i> Uren registreren</div></a>
 
 		<h1 style="margin-left:50px;margin-top:30px;">{{ Task.task_name }}</h1>
 		<p style="color:#000000;margin-left:50px;margin-top:10px;margin-right:50px;font-size:14px;">{{ Task.task_description }}</p>
-		<p style="margin-left:50px;">Datum: {{ Task.task_dateCreated | date('d-m-Y H:i:s') }}</p>
+		<p style="margin-left:50px;">
+		Datum: {{ Task.task_dateCreated | date('d-m-Y H:i:s') }}<br />
+		Totaal aantal uren geregistreerd: {{ HoursCount }}
+		</p>
 
 		 {% endfor %}
 
 		 <h2 style="margin-left:50px;margin-top:30px;">Taakuren</h2>
-
-		 {% for Hour in Hours %}
 
 		 <table width="100%">
 		 	<thead>
@@ -34,18 +36,18 @@
 		 		</tr>
 		 	</thead>
 		 	<tbody>
+				{% for Hour in Hours %}
 		        <tr>
 		        	<td>{{ loop.index }}</td>
 		        	<td>{{ Hour.task_hours }}</td>
 		        	<td>{{ Hour.hours_description }}</td>
-		        	<td width="200"><a href="../edit/{{ Item.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div></a>
-						<a href="../delete/{{ Item.Id }}"><div class="btn" style="background-color:#d30000;color:#ffffff;font-size:14px;margin-left:20px;"><i class="fa fa-trash" aria-hidden="true"></i></div></a>
+		        	<td width="200">
+						<a href="../deleteHours/{{ Hour.id }}/{{ Hour.task_id }}"><div class="btn" style="background-color:#d30000;color:#ffffff;font-size:14px;margin-left:20px;"><i class="fa fa-trash" aria-hidden="true"></i></div></a>
 					</td>
 		        </tr>
+		        {% endfor %}
 	        </tbody>
 	    </table>
-
-		 {% endfor %}
 
 		</div>
 	</div>

@@ -18,6 +18,16 @@ Class TasksView{
         return (new Twig())->View('tasks/add.html', array('Tasks' => $Tasks));
     }
 
+    public function addHours($task_id){
+    	$Tasks = $this->controller->addTaskHours($task_id);
+        return (new Twig())->View('tasks/addHours.html', array('Tasks' => $Tasks));
+    }
+
+    public function deleteHours($id){
+    	$Tasks = $this->controller->deleteTaskHours($id);
+        return (new Twig())->View('tasks/deleteHours.html', array('Tasks' => $Tasks));
+    }
+
     public function details($id){
     	$Task = $this->controller->task($id);
     	return (new Twig())->View('tasks/details.html', array('Tasks' => $Task[0], 'Hours' => $Task[1]));
