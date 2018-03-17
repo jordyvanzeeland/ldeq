@@ -10,8 +10,6 @@ Class ProjectController{
 
     public function add(){
 
-    	$Session = new Session();
-
       return (new ProjectModel())->addProject();
 
     }

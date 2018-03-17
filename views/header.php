@@ -21,6 +21,9 @@
 				<a style="color:#ffffff" href="/ldeq"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Projecten</a>
 			</li>
 			<li style="display:inline-block;list-style: none;border-right:solid 1px #65b4d4;padding:15px 20px;">
+				<a style="color:#ffffff" href="/ldeq/systems"><i class="fas fa-cog"></i>&nbsp;&nbsp;&nbsp;Systemen</a>
+			</li>
+			<li style="display:inline-block;list-style: none;border-right:solid 1px #65b4d4;padding:15px 20px;">
 				<a style="color:#ffffff" href="/ldeq/tasks"><i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;Urenregistratie</a>
 			</li>
 	</div>
