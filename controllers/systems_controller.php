@@ -20,7 +20,7 @@ Class SystemsController{
 
     }
 
-    public function project($id = null){
+    public function system($id = null){
 
         return (new SystemsModel())->getSystem($id);
     

@@ -19,12 +19,12 @@ Class SystemsView{
     }
 
     public function details($id){
-    	$System = $this->controller->add();
+    	$System = $this->controller->system($id);
         return (new Twig())->View('systems/system.html', array('System' => $System));
     }
 
     public function edit($id){
-    	$GetSystem = $this->controller->project($id);
+    	$GetSystem = $this->controller->edit($id);
     	return (new Twig())->View('systems/edit.html', array('System' => $GetSystem, $this->controller->edit($id)));
     }
 

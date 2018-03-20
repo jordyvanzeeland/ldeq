@@ -9,7 +9,6 @@
 				<table width="100%">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Projectnaam</th>
 							<th>Project Url</th>
 							<th>Bekijk Project</th>
@@ -18,7 +17,6 @@
 					<tbody>
 						{% for Project in Projects %}
 						<tr>
-							<td>{{ loop.index }}</td>
 							<td>{{ Project.ProjectName }}</td>
 							<td>{{ Project.ProjectUrl }}</td>
 							<td><a href="/ldeq/project/details/{{ Project.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk project</div></td>

@@ -72,7 +72,4 @@ if($_SERVER['REQUEST_URI'] == '/ldeq/'){
 	}
 }
 
-// $controller = new Controller($url);
-// $controller->showController($url);
-
 include('views/footer.php');

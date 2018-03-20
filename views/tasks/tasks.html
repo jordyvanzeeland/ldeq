@@ -2,14 +2,13 @@
 	<div class="row">
 		<div class="col content">
 			<a href="tasks/add"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-plus" aria-hidden="true"></i> Nieuw</div></a>
-			<div style="display:inline-block;float:right;width:30%;margin-right:20px;font-size:13px;margin-right:50px;">
+			<!-- <div style="display:inline-block;float:right;width:30%;margin-right:20px;font-size:13px;margin-right:50px;">
 				<input type="text" class="search" name="search" placeholder="Zoeken..." />
-			</div>
+			</div> -->
 			<div class="SearchResults">
 				<table width="100%">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Taak</th>
 							<th>Aangemaakt op</th>
 							<th>Bekijk Taak</th>
@@ -18,7 +17,6 @@
 					<tbody>
 						{% for Task in Tasks %}
 						<tr>
-							<td>{{ loop.index }}</td>
 							<td>{{ Task.task_name }}</td>
 							<td>{{ Task.task_dateCreated | date('d-m-Y H:i') }}</td>
 							<td><a href="/ldeq/tasks/details/{{ Task.id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk taak</div></td>

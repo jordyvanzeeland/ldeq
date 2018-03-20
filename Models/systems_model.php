@@ -38,7 +38,7 @@ Class SystemsModel{
             $System = (new Query())->select('ldeq_systems', ['*'], 'id=' . $id[1]);
             $Project[0]['system_password'] = $this->Encrypt_decrypt('decrypt', $System[0]['system_password']);
 
-            return $Project;
+            return $System;
         }
 	}
 
@@ -83,7 +83,7 @@ Class SystemsModel{
       }
 	}
 
-	public function deleteProject($id = null){
+	public function deleteSystem($id = null){
 
 		if(!empty($id)){
             $Delete = (new Query)->Delete('ldeq_systems', $id[1]);

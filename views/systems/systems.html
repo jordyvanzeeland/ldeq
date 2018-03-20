@@ -2,14 +2,13 @@
 	<div class="row">
 		<div class="col content">
 			<a href="systems/add"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;margin-left:50px;"><i class="fa fa-plus" aria-hidden="true"></i> Nieuw</div></a>
-			<div style="display:inline-block;float:right;width:30%;margin-right:20px;font-size:13px;margin-right:50px;">
+			<!-- <div style="display:inline-block;float:right;width:30%;margin-right:20px;font-size:13px;margin-right:50px;">
 				<input type="text" class="search" name="search" placeholder="Zoeken..." />
-			</div>
+			</div> -->
 			<div class="SearchResults">
 				<table width="100%">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Systeemnaam</th>
 							<th>Systeem Url</th>
 							<th>Bekijk inloggegevens</th>
@@ -18,10 +17,9 @@
 					<tbody>
 						{% for System in Systems %}
 						<tr>
-							<td>{{ loop.index }}</td>
 							<td>{{ System.system_name }}</td>
 							<td>{{ System.system_url }}</td>
-							<td><a href="/ldeq/systems/details/{{ System.Id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk inloggegevens</div></td>
+							<td><a href="/ldeq/systems/details/{{ System.id }}"><div class="btn" style="background-color:#d0ac53;color:#ffffff;font-size:14px;"><i class="fa fa-eye" aria-hidden="true"></i> Bekijk inloggegevens</div></td>
 						</tr>
 						{% endfor %}
 					</tbody>
